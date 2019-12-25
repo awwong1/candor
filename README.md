@@ -2,7 +2,7 @@
 
 *To be unreserved, honest, with sincerity- free from prejudice or malice.*
 
-A Hugo theme.
+A Hugo theme. Hugo extended support is required to due scss.
 
 ## License
 

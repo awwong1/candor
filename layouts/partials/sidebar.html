@@ -1,0 +1,14 @@
+<aside id="sidebar">
+  <a id="logo" rel="home me contents" href="{{ .Site.BaseURL }}">
+    <img alt="{{ .Site.Title }}" src="/images/logo.svg">
+  </a>
+  {{ with .Site.Menus.main }}
+  <nav>
+    <ul>
+      {{ range . }}
+      <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+  {{ end }}
+</aside>

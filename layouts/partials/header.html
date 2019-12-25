@@ -1,0 +1,8 @@
+<header>
+  {{ if .Title }}
+  <h1>
+    {{ with .Data.Singular }}{{ . }}:{{ end }}
+    {{ with .Title }}{{ . }}{{ end }}
+  </h1>
+  {{ end }}
+</header>

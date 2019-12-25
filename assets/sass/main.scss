@@ -1,0 +1,503 @@
+@import "normalize.scss";
+@import "fonts.scss";
+
+html {
+  font-family: "Source Serif Pro", Baskerville, "Libre Baskerville", serif;
+  font-weight: 400;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", "Source Serif Pro", serif;
+  font-weight: 600;
+}
+
+body {
+  max-width: 112ch;
+}
+
+@media only screen and (max-width: 65ch) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 65ch) {
+  body {
+    padding: 0 1.5ch 0 0.5ch;
+    margin: 0 auto;
+  }
+  @media only screen and (min-width: 118.5ch) {
+    body {
+      padding: 0 6ch 0 0.5ch;
+    }
+  }
+  main {
+    min-height: 95vh;
+    display: flex;
+    flex-flow: column;
+  }
+  @media only screen and (min-width: 176.1ch) {
+    main {
+      position: relative;
+      right: 4ch;
+    }
+  }
+  article {
+    flex: 1 1 auto;
+  }
+  #sidebar {
+    position: absolute;
+  }
+  article,
+  header {
+    margin-left: 15ch;
+  }
+  @media only screen and (max-width: 120ch) {
+    article,
+    header {
+      margin-left: 14.5ch;
+    }
+  }
+  @media only screen and (max-width: 112ch) {
+    article,
+    header {
+      margin-left: 14ch;
+    }
+  }
+  @media only screen and (max-width: 104ch) {
+    article,
+    header {
+      margin-left: 13.5ch;
+    }
+  }
+  @media only screen and (max-width: 96ch) {
+    article,
+    header {
+      margin-left: 13ch;
+    }
+  }
+}
+
+@media only screen and (max-width: 65ch) {
+  body {
+    margin: 0 1ch;
+  }
+}
+
+#sidebar {
+  font-family: "Raleway", "Source Sans Pro", sans-serif;
+  code {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+  }
+  a {
+    display: block;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+  }
+}
+
+@media only screen and (min-width: 65ch) {
+  #sidebar {
+    font-variant: small-caps;
+    width: 10ch;
+    a#logo {
+      margin: 1em 0 1em 0;
+    }
+    a#logo img {
+      width: 5rem;
+    }
+    code {
+      font-variant: none;
+      text-transform: uppercase;
+      font-size: 0.7em;
+    }
+  }
+}
+
+@media only screen and (max-width: 65ch) {
+  #sidebar {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0.5em 0;
+    a {
+      border: 1px dotted #000;
+      padding: 3px 10px;
+      text-align: center;
+      margin: 1px;
+    }
+    a#logo {
+      padding: 8px 5px 3px 5px;
+    }
+    a.home,
+    a.links,
+    a.site {
+      flex: 1 1 20%;
+    }
+    #sidebar-links {
+      display: flex;
+    }
+  }
+  #sidebar-links {
+    flex-flow: row wrap;
+    margin: 0.5em 0 0 0;
+  }
+  #sidebar #logo {
+    margin: 1px;
+  }
+  #sidebar #logo img {
+    width: 5rem;
+  }
+}
+
+article {
+  align-self: flex-start;
+  flex-basis: 0;
+  .summary-title {
+    font-size: 150%;
+    display: inline;
+  }
+}
+
+header {
+  overflow: auto;
+  h1 {
+    margin: 0.2em 0 0.5em 0;
+    text-align: center;
+    text-transform: none;
+    font-variant: small-caps;
+    font-size: 2.5em;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -1px;
+  }
+}
+
+@media only screen and (max-width: 65ch) {
+  header h1 {
+    font-size: 2em;
+  }
+}
+
+ul#tags::before {
+  content: "topics:";
+}
+
+ul#tags {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+  li {
+    display: inline;
+  }
+}
+
+#page-metadata {
+  margin: 0 0 1em 0;
+  overflow: visible;
+  font-size: 0.95em;
+  line-height: 1.1;
+  hr {
+    display: none;
+  }
+  #page-description {
+    display: block;
+    margin: 0 auto 0.5em auto;
+  }
+  #page-description + br {
+    display: none;
+  }
+  span:nth-of-type(n + 3) {
+    white-space: nowrap;
+  }
+}
+
+@media only screen and (max-width: 128ch) {
+  #TableOfContents {
+    font-size: 0.95rem;
+  }
+}
+
+@media only screen and (max-width: 120ch) {
+  #TableOfContents {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 112ch) {
+  #TableOfContents {
+    font-size: 0.85rem;
+    margin: 0 1.5rem 1.25rem 0;
+  }
+}
+
+@media only screen and (max-width: 104ch) {
+  #TableOfContents {
+    font-size: 0.8rem;
+    margin: 0 1.25rem 1rem 0;
+  }
+}
+
+@media only screen and (max-width: 96ch) {
+  #TableOfContents {
+    margin: 0 1rem 1rem 0;
+  }
+}
+
+@media only screen and (min-width: 90ch) {
+  #TableOfContents {
+    float: left;
+    max-width: 30ch;
+  }
+}
+
+@media only screen and (max-width: 90ch) {
+  #TableOfContents {
+    float: none;
+    margin: 2em auto;
+    font-size: 1rem;
+  }
+  #TableOfContents > ul > li > ul {
+    column-count: 2;
+  }
+}
+
+@media only screen and (max-width: 64.9ch) {
+  #TableOfContents a {
+    display: inline-block;
+  }
+  #TableOfContents > ul > li > ul {
+    column-count: 1;
+  }
+  #TableOfContents li li a {
+    padding: 0 0 1px 0;
+  }
+  #TableOfContents li li li a {
+    padding: 0 0 2px 0;
+  }
+  #TableOfContents li li li li a {
+    padding: 0 0 3px 0;
+  }
+  #TableOfContents li li li li a {
+    padding: 0 0 4px 0;
+  }
+}
+
+#TableOfContents {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-family: "Raleway", "Source Sans Pro", sans-serif;
+  margin: 0 2rem 1.5rem 0;
+  line-height: 1;
+  padding: 8px 8px 2px 7px;
+  position: relative;
+  z-index: 1;
+  :empty {
+    display: none;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 4px;
+    padding-left: 1.4em;
+    text-indent: 0;
+    padding: 0;
+  }
+  ul ul {
+    list-style-type: none;
+    padding-left: 0.7em;
+    margin-top: 2px;
+  }
+  li {
+    font-weight: 700;
+    margin: 5px 0 10px 0;
+    padding-left: 1.125em;
+    position: relative;
+    overflow-wrap: break-word;
+  }
+  li li {
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 0.9em;
+  }
+  p {
+    margin-top: 9px;
+    margin-bottom: 3px;
+  }
+  a {
+    border: 0;
+    display: block;
+    position: relative;
+    :hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: #000;
+    }
+  }
+  a:hover::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    margin-left: 0.2em;
+    left: 100%;
+    top: 0;
+    background-color: #663399;
+    width: 0.25em;
+    height: 100%;
+  }
+}
+
+#TableOfContents > ul {
+  counter-reset: htoc_1;
+}
+
+#TableOfContents > ul > li::before {
+  counter-increment: htoc_1;
+  content: counter(htoc_1) "\2006  ";
+}
+
+#TableOfContents > ul ul {
+  counter-reset: htoc_2;
+}
+
+#TableOfContents > ul ul li::before {
+  counter-increment: htoc_2;
+  content: counter(htoc_1) "." counter(htoc_2) "\2006  ";
+}
+
+#TableOfContents > ul ul ul {
+  counter-reset: htoc_3;
+}
+
+#TableOfContents > ul ul ul li::before {
+  counter-increment: htoc_3;
+  content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "\2006  ";
+}
+
+#TableOfContents > ul ul ul ul {
+  counter-reset: htoc_4;
+}
+
+#TableOfContents > ul ul ul ul li::before {
+  counter-increment: htoc_4;
+  content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "\2006  ";
+}
+
+#TableOfContents > ul ul ul ul ul {
+  counter-reset: htoc_5;
+}
+
+#TableOfContents > ul ul ul ul ul li::before {
+  counter-increment: htoc_5;
+  content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "." counter(htoc_5) "\2006  ";
+}
+
+#TableOfContents > ul ul ul ul ul ul {
+  counter-reset: htoc_6;
+}
+
+#TableOfContents > ul ul ul ul ul ul li::before {
+  counter-increment: htoc_6;
+  content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "." counter(htoc_5) "."
+    counter(htoc_6) "\2006  ";
+}
+
+#TableOfContents ul li::before {
+  position: absolute;
+  right: calc(100% - 1em);
+  width: 12ch;
+  text-align: right;
+  font-weight: 400;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+#TableOfContents ul li:hover::before {
+  opacity: 0.7;
+}
+
+#markdownBody {
+  overflow-wrap: break-word;
+}
+
+@media only screen and (min-width: 176.1ch) {
+  #markdownBody {
+    position: relative;
+  }
+}
+
+@media only screen and (min-width: 65ch) {
+  @media only screen and (max-width: 100ch) {
+    #markdownBody {
+      line-height: 1.45;
+    }
+  }
+  @media only screen and (min-width: 100.1ch) and (max-width: 120ch) {
+    #markdownBody {
+      line-height: 1.5;
+    }
+  }
+  @media only screen and (min-width: 120.1ch) {
+    #markdownBody {
+      line-height: 1.55;
+    }
+  }
+}
+
+@supports (-webkit-hyphens: auto) or (-ms-hyphens: auto) or (hyphens: auto) {
+  #markdownBody li,
+  #markdownBody p {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+}
+
+#markdownBody p {
+  font-variant-numeric: oldstyle-nums;
+}
+
+@media (prefers-color-scheme: dark) {
+  body::before,
+  body > * {
+    filter: invert(95%);
+  }
+}
+
+ol#breadcrumb {
+  display: relative;
+  list-style-type: none;
+  margin: 0 0 0.5em 0;
+  padding: 0;
+  li {
+    display: inline;
+    &:before {
+      content: "∕ ";
+    }
+  }
+}
+
+#paginator {
+  margin-top: 0.5em;
+}

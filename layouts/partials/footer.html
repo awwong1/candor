@@ -1,0 +1,15 @@
+<footer>
+  <!-- <div>
+    <h3>Latest Posts</h3>
+    <ul>
+      {{ range first 5 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div> -->
+
+  <p>
+    &copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+    {{ .Site.Copyright }}
+  </p>
+</footer>

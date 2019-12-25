@@ -1,0 +1,12 @@
+name = "Candor"
+license = "MIT"
+licenselink = "https://git.udia.ca/alex/candor/LICENSE"
+description = "A minimalist Hugo theme."
+homepage = "https://git.udia.ca/alex/candor"
+tags = ["blog", "plain", "math"]
+features = ["blog"]
+min_version = "0.62"
+
+[author]
+  name = "Alexander Wong"
+  homepage = "https://git.udia.ca/alex"

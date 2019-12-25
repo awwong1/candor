@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ partial "sidebar.html" . }}
+<main>
+  {{ partial "header" . }}
+  <article>
+    {{ partial "page-metadata" . }}
+    {{ .TableOfContents }}
+    <div id="markdownBody">
+      {{ .Content }}
+    </div>
+
+    <div>
+      {{ template "_internal/disqus.html" . }}
+    </div>
+    <!-- {{ partial "breadcrumbs" . }} -->
+  </article>
+</main>
+{{ end }}
