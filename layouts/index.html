@@ -1,9 +1,10 @@
 {{ define "main" }}
+{{ partial "sidebar.html" . }}
 <main>
-  {{ partial "sidebar.html" . }}
+  {{ partial "header" . }}
   <article>
-    {{ .TableOfContents }}
     {{ partial "page-metadata" . }}
+    {{ .TableOfContents }}
     <div id="markdownBody">
       {{ .Content }}
     </div>

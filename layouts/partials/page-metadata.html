@@ -1,17 +1,31 @@
 <div id="page-metadata">
+  {{ if .Page.Params.Abstract }}
+  <div id="page-abstract">{{ .Page.Params.Abstract }}</div>
+  {{ end }}
   <!-- <span id="kind-type">kind: {{ .Kind }}/{{ .Type }};</span> -->
   {{ if .PublishDate }}
-    <span id="page-published" title="{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 MST" }}">
-      created: <time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-0700" }}">{{ .PublishDate.Format "02 Jan 2006" }}</time>;
-    </span>
+  <span id="page-published" title="{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 MST" }}">
+    created: <time class="meta-val"
+      datetime="{{ .PublishDate.Format "2006-01-02T15:04:05-0700" }}">{{ .PublishDate.Format "02 Jan 2006" }}</time>
+  </span>
   {{ end }}
   {{ if .Lastmod }}
-    <span id="page-modified" title="{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 MST" }}">
-      modified: <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05-0700" }}">{{ .Lastmod.Format "02 Jan 2006" }}</time>;
-    </span>
+  <span id="page-modified" title="{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 MST" }}">
+    modified: <time class="meta-val"
+      datetime="{{ .Lastmod.Format "2006-01-02T15:04:05-0700" }}">{{ .Lastmod.Format "02 Jan 2006" }}</time>
+  </span>
+  {{ end }}
+  {{ with .Params.status }}
+  <span id="page-status">
+    <!-- status: <span class="meta-val"><a href="{{ "/status/" | relLangURL }}{{ . | urlize }}"{{ . }}></a></span> -->
+    status: <span class="meta-val">{{ . }}</span>
+  </span>
   {{ end }}
   {{ if .ReadingTime }}
-    <span id="reading-time">reading time: {{ .ReadingTime }} min(s);</span>
+  <span id="reading-time">reading time:
+    <span class="meta-val">{{ .ReadingTime }}
+      min{{ if gt .ReadingTime 1 }}s{{ end }}</span>
+  </span>
   {{ end }}
   {{ with .Params.tags }}
   <ul id="tags">
