@@ -4,8 +4,6 @@
 html {
   font-family: "Source Serif Pro", Baskerville, "Libre Baskerville", serif;
   font-weight: 400;
-  color: #000000;
-  background-color: #ffffff;
 }
 
 h1,
@@ -20,6 +18,8 @@ h6 {
 
 body {
   max-width: 112ch;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 @media only screen and (max-width: 65ch) {
@@ -518,25 +518,8 @@ ul#tags {
 }
 
 @media (prefers-color-scheme: dark) {
-  body::before,
-  body > * {
-    filter: invert(95%);
+  body {
+    filter: invert(98%);
+    background-color: #000000;
   }
-}
-
-ol#breadcrumb {
-  display: relative;
-  list-style-type: none;
-  margin: 0 0 0.5em 0;
-  padding: 0;
-  li {
-    display: inline;
-    &:before {
-      content: "∕ ";
-    }
-  }
-}
-
-#paginator {
-  margin-top: 0.5em;
 }
