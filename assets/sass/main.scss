@@ -43,12 +43,6 @@ body {
     display: flex;
     flex-flow: column;
   }
-  @media only screen and (min-width: 176.1ch) {
-    main {
-      position: relative;
-      right: 4ch;
-    }
-  }
   article {
     flex: 1 1 auto;
   }
