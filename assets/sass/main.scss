@@ -184,6 +184,7 @@ article {
   }
   pre {
     margin: 0;
+    overflow: auto;
   }
   :not(pre) > code {
     padding: 0 2px;
