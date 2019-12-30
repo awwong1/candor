@@ -185,16 +185,14 @@ article {
   pre {
     margin: 0;
     overflow: auto;
+    padding: 0 2px;
+    border: 1px dashed #c8c8c8;
   }
   :not(pre) > code {
     padding: 0 2px;
     font-size: 0.9em;
     border: 1px solid #c8c8c8;
     background-color: #fafafa;
-  }
-  .highlight {
-    padding: 0 2px;
-    border: 1px dashed #c8c8c8;
   }
   blockquote {
     border: none;
