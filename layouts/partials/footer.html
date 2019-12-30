@@ -7,9 +7,19 @@
       {{ end }}
     </ul>
   </div> -->
-
   <p>
-    &copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-    {{ .Site.Copyright }}
+    &copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">
+      {{ with .Site.Params.author }}<span>{{ . }},</span>{{ end }}
+      {{ .Site.Title }}</a>
+    <span id="license">
+      License:
+      {{ if .Site.Params.LicenseLink }}
+      <a href="{{ .Site.Params.LicenseLink }}">{{ .Site.Params.License }}</a>
+      {{ else if .Site.Params.License }}
+      {{ .Site.Params.License }}
+      {{ else }}
+      <a href="http://www.wtfpl.net/about/">WTFPL</a>
+      {{ end }}
+    </span>
   </p>
 </footer>

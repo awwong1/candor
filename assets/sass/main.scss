@@ -166,8 +166,7 @@ article {
     font-size: 150%;
     display: inline;
   }
-  & > :not(#TableOfContents) a
-  {
+  & > :not(#TableOfContents) a {
     &:hover {
       color: #888888;
       text-decoration-style: dotted;
@@ -181,10 +180,20 @@ article {
     }
   }
   code {
-    padding: 0 4px;
-    font-size: .9em;
+    font-size:0.9em;
+  }
+  pre {
+    margin: 0;
+  }
+  :not(pre) > code {
+    padding: 0 2px;
+    font-size: 0.9em;
     border: 1px solid #c8c8c8;
     background-color: #fafafa;
+  }
+  .highlight {
+    padding: 0 2px;
+    border: 1px dashed #c8c8c8;
   }
   blockquote {
     border: none;
@@ -240,13 +249,13 @@ ul#tags {
   overflow: visible;
   font-size: 0.95em;
   line-height: 1.1;
-  &>span:not(:last-child)::after {
+  & > span:not(:last-child)::after {
     content: "|";
   }
   hr {
     display: none;
   }
-  #page-abstract {
+  #page-description {
     font-style: italic;
     margin-bottom: 0.5em;
   }
@@ -471,6 +480,11 @@ ul#tags {
 
 #markdownBody {
   overflow-wrap: break-word;
+  & > ol > li > :first-child,
+  ul > li > :first-child {
+    position: relative;
+    margin: 0;
+  }
 }
 
 @media only screen and (min-width: 176.1ch) {
@@ -509,6 +523,14 @@ ul#tags {
 
 #markdownBody p {
   font-variant-numeric: oldstyle-nums;
+}
+
+footer {
+  font-family: "Raleway", "Source Sans Pro", sans-serif;
+  & #license::before {
+    content: "|";
+    margin-left: 0.2em;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

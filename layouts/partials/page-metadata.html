@@ -1,7 +1,6 @@
 <div id="page-metadata">
-  {{ if .Page.Params.Abstract }}
-  <div id="page-abstract">{{ .Page.Params.Abstract }}</div>
-  {{ end }}
+  {{if .IsHome}}{{$.Site.Params.description}}{{end}}
+  {{ with .Description }}<div id="page-description">{{ . }}</div>{{ end }}
   <!-- <span id="kind-type">kind: {{ .Kind }}/{{ .Type }};</span> -->
   {{ if .PublishDate }}
   <span id="page-published" title="{{ .PublishDate.Format "Mon, 02 Jan 2006 15:04:05 MST" }}">
@@ -12,7 +11,7 @@
   {{ if .Lastmod }}
   <span id="page-modified" title="{{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 MST" }}">
     modified: <time class="meta-val"
-      datetime="{{ .Lastmod.Format "2006-01-02T15:04:05-0700" }}">{{ .Lastmod.Format "02 Jan 2006" }}</time>
+      datetime="{{ .Lastmod.Format "2006-01-02T15:04:05-0700" }}">{{ .Lastmod.Format "02 Jan 2006 " }}</time>
   </span>
   {{ end }}
   {{ with .Params.status }}

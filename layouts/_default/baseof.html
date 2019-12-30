@@ -5,24 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ .Title }}</title>
-  {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-  {{ with .Page.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+  <title>{{ if ne .Title .Site.Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
-  <!-- SCSS Style assets -->
-  {{ $scssOpts := (dict "outputStyle" "compressed" "enableSourceMap" true) }}
-  {{ $styles := resources.Get "sass/main.scss" | resources.ToCSS $scssOpts | fingerprint }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
-  <!-- JavaScript assets -->
-  {{ $appJs := resources.Get "js/main.js" }}
-  {{ $mathJs := resources.Get "js/mathjax-tex-svg.js" }}
-  {{ $js := slice $appJs $mathJs | resources.Concat "js/bundle.js" | minify | fingerprint }}
-  <script type="text/javascript" src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" defer async></script>
-  <!-- RSS -->
+  {{ if .Description }}<meta name="description" content="{{.Description}}" />{{ end }}
+  {{ hugo.Generator }}
+  {{ $scssOpts := (dict "outputStyle" "compressed") }}
+  {{ with resources.Get "sass/main.scss" | resources.ToCSS $scssOpts }}<style>{{ .Content | safeCSS }}</style>{{ end }}
+  {{ $appJs := resources.Get "js/main.js" }}{{ $mathJs := resources.Get "js/mathjax-tex-svg.js" }}
+  {{ with slice $appJs $mathJs | resources.Concat "js/bundle.js" | minify | fingerprint }}
+  <script type="text/javascript" src="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" defer async></script>{{ end }}
   {{ with .OutputFormats.Get "RSS" -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
-  {{- end }}
-  <!-- Favicons -->
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}{{- end }}
+  <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
