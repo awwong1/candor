@@ -22,6 +22,13 @@ body {
   background-color: #ffffff;
 }
 
+main {
+  min-height: 95vh;
+  article {
+    margin-top: 1em;
+  }
+}
+
 @media only screen and (max-width: 65ch) {
   html {
     font-size: 18px;
@@ -37,14 +44,6 @@ body {
     body {
       padding: 0 6ch 0 0.5ch;
     }
-  }
-  main {
-    min-height: 95vh;
-    display: flex;
-    flex-flow: column;
-  }
-  article {
-    flex: 1 1 auto;
   }
   #sidebar {
     position: absolute;
@@ -160,8 +159,6 @@ body {
 }
 
 article {
-  align-self: flex-start;
-  flex-basis: 0;
   .summary-title {
     font-size: 150%;
     display: inline;

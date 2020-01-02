@@ -2,6 +2,9 @@
 {{ partial "sidebar.html" . }}
 <main>
   {{ partial "header" . }}
+  <article>
+    {{ .Content }}
+  </article>
   {{ range .Paginator.Pages }}
   {{ .Render "summary" }}
   {{ end }}
