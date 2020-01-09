@@ -481,6 +481,25 @@ ul#tags {
     position: relative;
     margin: 0;
   }
+  table {
+    display: inline-block;
+    overflow-x: auto;
+    thead {
+      font-family: "Raleway", "Source Sans Pro", sans-serif;
+    }
+    tr:nth-child(odd) {
+      background: #e9e9e9;
+    }
+    tr:nth-child(even){
+      background: #f9f9f9;
+    }
+    td {
+      padding: 0 1ch 0 1ch;
+    }
+    td:not(:first-of-type) {
+      padding-left: 2ch;
+    }
+  }
 }
 
 @media only screen and (min-width: 176.1ch) {
