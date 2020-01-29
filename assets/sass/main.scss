@@ -1,5 +1,6 @@
 @import "normalize.scss";
 @import "fonts.scss";
+@import "katex.scss";
 
 html {
   font-family: "Source Serif Pro", Baskerville, "Libre Baskerville", serif;
@@ -553,4 +554,9 @@ footer {
     filter: invert(98%);
     background-color: #000000;
   }
+}
+
+span.katex-mathml {
+  color: purple;
+  display: block;
 }

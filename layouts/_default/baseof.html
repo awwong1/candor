@@ -11,9 +11,18 @@
   {{ hugo.Generator }}
   {{ $scssOpts := (dict "outputStyle" "compressed") }}
   {{ with resources.Get "sass/main.scss" | resources.ToCSS $scssOpts }}<style>{{ .Content | safeCSS }}</style>{{ end }}
-  {{ $appJs := resources.Get "js/main.js" }}{{ $mathJs := resources.Get "js/mathjax-tex-svg.js" }}
-  {{ with slice $appJs $mathJs | resources.Concat "js/bundle.js" | minify | fingerprint }}
-  <script type="text/javascript" src="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" defer async></script>{{ end }}
+  {{ $appJs := resources.Get "js/main.js" }}{{ $katexJs := resources.Get "js/katex.js" }}
+  {{ with slice $appJs $katexJs | resources.Concat "js/bundle.js" | minify | fingerprint }}
+  <script type="text/javascript" src="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" defer></script>{{ end }}
+  {{ $autoJs := resources.Get "js/katex-auto-render.js" }}{{ $copyJs := resources.Get "js/katex-copy-tex.js" }}
+  {{ with slice $autoJs $copyJs | resources.Concat "js/tex-contrib.js" | minify | fingerprint }}
+  <script type="text/javascript" src="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" defer
+    onload="renderMathInElement(document.getElementById('markdownBody'),{delimiters:[
+      {left: '$$', right: '$$', display: true},
+      {left: '\\(', right: '\\)', display: false},
+      {left: '\\[', right: '\\]', display: true}
+    ]});"></script>{{ end }}
+
   {{ with .OutputFormats.Get "RSS" -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}{{- end }}
   <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml">

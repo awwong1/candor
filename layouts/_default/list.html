@@ -3,7 +3,7 @@
 <main>
   {{ partial "header" . }}
   <article>
-    {{ .Content }}
+    <div id="markdownBody">{{ .Content }}</div>
   </article>
   {{ range .Paginator.Pages }}
   {{ .Render "summary" }}
