@@ -160,6 +160,14 @@ main {
 }
 
 article {
+  scrollbar-color: #663399 #99cc66;
+  scrollbar-width: thin;
+  ::-webkit-scrollbar-thumb {
+    background-color: #663399;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #99cc66;
+  }
   .summary-title {
     font-size: 150%;
     display: inline;
@@ -468,9 +476,10 @@ ul#tags {
     position: relative;
     margin: 0;
   }
-  table {
-    display: inline-block;
+  .table-wrapper {
     overflow-x: auto;
+  }
+  table {
     thead {
       font-family: "Raleway", "Source Sans Pro", sans-serif;
     }
@@ -596,9 +605,4 @@ footer {
     filter: invert(98%);
     background-color: #000000;
   }
-}
-
-span.katex-mathml {
-  color: purple;
-  display: block;
 }

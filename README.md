@@ -4,6 +4,12 @@
 
 A Hugo theme. Hugo extended support is required to due scss.
 
+```bash
+git clone https://github.com/gohugoio/hugo.git
+cd hugo
+go install --tags extended
+```
+
 ## License
 
 [MIT](LICENSE)
