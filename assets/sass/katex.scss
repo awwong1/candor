@@ -7,13 +7,20 @@
  * representation instead of the LaTeX source code.  (Full selections will
  * still produce the LaTeX source code.)
  */
- .katex,
- .katex-display {
-     user-select: all;
-     -moz-user-select: all;
-     -webkit-user-select: all;
-     -ms-user-select: all;
- }
+
+.katex,
+.katex-display {
+    user-select: all;
+    -moz-user-select: all;
+    -webkit-user-select: all;
+    -ms-user-select: all;
+}
+
+/* Wrap all display math in an overflow friendly block , modified katex-auto-render.js */
+.katex-container {
+  display: block;
+  overflow-x: auto;
+}
 
 @font-face {
   font-family: 'KaTeX_AMS';

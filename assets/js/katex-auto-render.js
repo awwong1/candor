@@ -238,6 +238,10 @@ var auto_render_renderMathInText = function renderMathInText(text, optionsCopy) 
       fragment.appendChild(document.createTextNode(data[i].data));
     } else {
       var span = document.createElement("span");
+      // enables custom overflow styles for display math
+      if (optionsCopy && !optionsCopy.displayMode) {
+        span.className = "katex-container";
+      }
       var math = data[i].data; // Override any display mode defined in the settings with that
       // defined by the text itself
 
