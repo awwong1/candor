@@ -5,14 +5,7 @@
   <article>
     {{ partial "page-metadata" . }}
     {{ .TableOfContents }}
-    <div id="markdownBody">
-      {{- .Content -}}
-    </div>
+    <div id="markdownBody">{{- partial "anchorize-headings.html" .Content -}}</div>
   </article>
-  <!-- {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
-  {{ range $paginator.Pages }}
-  {{ .Render "summary" }}
-  {{ end }}
-  {{ partial "pagination.html" . }} -->
 </main>
 {{ end }}

@@ -5,6 +5,9 @@
 html {
   font-family: "Source Serif Pro", Baskerville, "Libre Baskerville", serif;
   font-weight: 400;
+  @media only screen and (max-width: 65ch) {
+    font-size: 18px;
+  }
 }
 
 h1,
@@ -17,12 +20,6 @@ h6 {
   font-weight: 600;
 }
 
-body {
-  max-width: 112ch;
-  color: #000000;
-  background-color: #ffffff;
-}
-
 main {
   min-height: 95vh;
   article:not(:first-of-type) {
@@ -30,68 +27,47 @@ main {
   }
 }
 
-@media only screen and (max-width: 65ch) {
-  html {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 65ch) {
-  body {
+body {
+  max-width: 112ch;
+  color: #000000;
+  background-color: #ffffff;
+  @media only screen and (min-width: 65ch) {
     padding: 0 1.5ch 0 0.5ch;
     margin: 0 auto;
-  }
-  @media only screen and (min-width: 118.5ch) {
-    body {
+    @media only screen and (min-width: 118.5ch) {
       padding: 0 6ch 0 0.5ch;
     }
-  }
-  #sidebar {
-    position: absolute;
-  }
-  article,
-  header {
-    margin-left: 15ch;
-  }
-  @media only screen and (max-width: 120ch) {
+    #sidebar {
+      position: absolute;
+    }
     article,
     header {
-      margin-left: 14.5ch;
+      margin-left: 15ch;
+      @media only screen and (max-width: 120ch) {
+        margin-left: 14.5ch;
+      }
+      @media only screen and (max-width: 112ch) {
+        margin-left: 14ch;
+      }
+      @media only screen and (max-width: 104ch) {
+        margin-left: 13.5ch;
+      }
+      @media only screen and (max-width: 96ch) {
+        margin-left: 13ch;
+      }
     }
   }
-  @media only screen and (max-width: 112ch) {
-    article,
-    header {
-      margin-left: 14ch;
-    }
-  }
-  @media only screen and (max-width: 104ch) {
-    article,
-    header {
-      margin-left: 13.5ch;
-    }
-  }
-  @media only screen and (max-width: 96ch) {
-    article,
-    header {
-      margin-left: 13ch;
-    }
-  }
-}
-
-@media only screen and (max-width: 65ch) {
-  body {
+  @media only screen and (max-width: 65ch) {
     margin: 0 1ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    filter: invert(98%);
+    background-color: #000000;
   }
 }
 
 #sidebar {
   font-family: "Raleway", "Source Sans Pro", sans-serif;
-  code {
-    border: none;
-    background-color: transparent;
-    padding: 0;
-  }
   a {
     display: block;
   }
@@ -104,28 +80,16 @@ main {
     margin-inline-end: 0;
     padding-inline-start: 0;
   }
-}
-
-@media only screen and (min-width: 65ch) {
-  #sidebar {
-    font-variant: small-caps;
+  @media only screen and (min-width: 65ch) {
     width: 10ch;
     a#logo {
       margin: 1em 0 1em 0;
-    }
-    a#logo img {
-      width: 5rem;
-    }
-    code {
-      font-variant: none;
-      text-transform: uppercase;
-      font-size: 0.7em;
+      img {
+        width: 5rem;
+      }
     }
   }
-}
-
-@media only screen and (max-width: 65ch) {
-  #sidebar {
+  @media only screen and (max-width: 65ch) {
     display: flex;
     justify-content: center;
     margin: 0 0 0.5em 0;
@@ -136,7 +100,10 @@ main {
       margin: 1px;
     }
     a#logo {
-      padding: 8px 5px 3px 5px;
+      padding: 10px 2px 0px 5px;
+      img {
+        width: 4rem;
+      }
     }
     a.home,
     a.links,
@@ -145,17 +112,9 @@ main {
     }
     #sidebar-links {
       display: flex;
+      flex-flow: row wrap;
+      margin: 0.5em 0 0 0;
     }
-  }
-  #sidebar-links {
-    flex-flow: row wrap;
-    margin: 0.5em 0 0 0;
-  }
-  #sidebar #logo {
-    margin: 1px;
-  }
-  #sidebar #logo img {
-    width: 5rem;
   }
 }
 
@@ -218,24 +177,20 @@ header {
     text-align: center;
     text-transform: none;
     font-variant: small-caps;
-    font-size: 2.5em;
+    font-size: 3em;
     line-height: 1.15;
     font-weight: 600;
     letter-spacing: -1px;
+    @media only screen and (max-width: 65ch) {
+      font-size: 2em;
+    }
   }
-}
-
-@media only screen and (max-width: 65ch) {
-  header h1 {
-    font-size: 2em;
-  }
-}
-
-ul#tags::before {
-  content: "topics:";
 }
 
 ul#tags {
+  &::before {
+    content: "topics:";
+  }
   display: inline;
   list-style: none;
   margin: 0;
@@ -261,15 +216,12 @@ ul#tags {
     display: none;
   }
   #page-description {
+    display: block;
     font-style: italic;
     margin-bottom: 0.5em;
   }
   .meta-val {
     font-style: italic;
-  }
-  #page-description {
-    display: block;
-    margin: 0 auto 0.5em auto;
   }
   #page-description + br {
     display: none;
@@ -279,89 +231,69 @@ ul#tags {
   }
 }
 
-@media only screen and (max-width: 128ch) {
-  #TableOfContents {
-    font-size: 0.95rem;
-  }
-}
-
-@media only screen and (max-width: 120ch) {
-  #TableOfContents {
-    font-size: 0.9rem;
-  }
-}
-
-@media only screen and (max-width: 112ch) {
-  #TableOfContents {
-    font-size: 0.85rem;
-    margin: 0 1.5rem 1.25rem 0;
-  }
-}
-
-@media only screen and (max-width: 104ch) {
-  #TableOfContents {
-    font-size: 0.8rem;
-    margin: 0 1.25rem 1rem 0;
-  }
-}
-
-@media only screen and (max-width: 96ch) {
-  #TableOfContents {
-    margin: 0 1rem 1rem 0;
-  }
-}
-
-@media only screen and (min-width: 90ch) {
-  #TableOfContents {
-    float: left;
-    max-width: 30ch;
-  }
-}
-
-@media only screen and (max-width: 90ch) {
-  #TableOfContents {
-    float: none;
-    margin: 2em auto;
-    font-size: 1rem;
-  }
-  #TableOfContents > ul > li > ul {
-    column-count: 2;
-  }
-}
-
-@media only screen and (max-width: 64.9ch) {
-  #TableOfContents a {
-    display: inline-block;
-  }
-  #TableOfContents > ul > li > ul {
-    column-count: 1;
-  }
-  #TableOfContents li li a {
-    padding: 0 0 1px 0;
-  }
-  #TableOfContents li li li a {
-    padding: 0 0 2px 0;
-  }
-  #TableOfContents li li li li a {
-    padding: 0 0 3px 0;
-  }
-  #TableOfContents li li li li a {
-    padding: 0 0 4px 0;
-  }
-}
-
 #TableOfContents {
   border: 1px solid #ccc;
   background-color: #f9f9f9;
   font-family: "Raleway", "Source Sans Pro", sans-serif;
   margin: 0 2rem 1.5rem 0;
   line-height: 1;
-  padding: 8px 8px 2px 7px;
+  padding: 6px 6px 4px 6px;
   position: relative;
   z-index: 1;
   &:empty {
     display: none;
   }
+
+  @media only screen and (max-width: 128ch) {
+    font-size: 0.95rem;
+  }
+  @media only screen and (max-width: 120ch) {
+    font-size: 0.9rem;
+  }
+  @media only screen and (max-width: 112ch) {
+    font-size: 0.85rem;
+    margin: 0 1.5rem 1.25rem 0;
+  }
+  @media only screen and (max-width: 104ch) {
+    font-size: 0.8rem;
+    margin: 0 1.25rem 1rem 0;
+  }
+  @media only screen and (max-width: 96ch) {
+    margin: 0 1rem 1rem 0;
+  }
+  @media only screen and (min-width: 90ch) {
+    float: left;
+    max-width: 30ch;
+  }
+  @media only screen and (max-width: 90ch) {
+    float: none;
+    margin: 2em auto;
+    font-size: 1rem;
+    & > ul > li > ul {
+      column-count: 2;
+    }
+  }
+  @media only screen and (max-width: 64.9ch) {
+    a {
+      display: inline-block;
+    }
+    & > ul > li > ul {
+      column-count: 1;
+    }
+    li li a {
+      padding: 0 0 1px 0;
+    }
+    li li li a {
+      padding: 0 0 2px 0;
+    }
+    li li li li a {
+      padding: 0 0 3px 0;
+    }
+    li li li li li a {
+      padding: 0 0 4px 0;
+    }
+  }
+
   ul {
     list-style-type: none;
     padding-left: 0;
@@ -496,6 +428,54 @@ ul#tags {
       padding-left: 2ch;
     }
   }
+  a.h-anchor {
+    &:hover {
+      color: #000000;
+      opacity: 0.825;
+      &::after {
+        content: "";
+        background-image: url(/images/logo.svg);
+        background-repeat: no-repeat;
+        background-size: 1em;
+        width: 0.9em;
+        height: 1em;
+        display: inline-block;
+        padding: 0;
+        vertical-align: sub;
+        opacity: 0.825;
+      }
+    }
+    &:visited {
+      color: #000000;
+    }
+    &:link {
+      color: #000000;
+      text-decoration-line: none;
+    }
+  }
+  @media only screen and (min-width: 176.1ch) {
+    position: relative;
+  }
+  @media only screen and (min-width: 65ch) {
+    @media only screen and (max-width: 100ch) {
+      line-height: 1.45;
+    }
+    @media only screen and (min-width: 100ch) and (max-width: 120ch) {
+      line-height: 1.5;
+    }
+    @media only screen and (min-width: 120ch) {
+      line-height: 1.55;
+    }
+  }
+  @supports (-webkit-hyphens: auto) or (-ms-hyphens: auto) or (hyphens: auto) {
+    li, p {
+      text-align: justify;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+    }
+  }
+
   // udia.ca, media.udia.ca (localhost for development)
   a[href^="//localhost:1313"], a[href^="//media.udia.ca"], a[href^="//udia.ca"] {
     &:hover::after {
@@ -554,55 +534,10 @@ ul#tags {
   }
 }
 
-@media only screen and (min-width: 176.1ch) {
-  #markdownBody {
-    position: relative;
-  }
-}
-
-@media only screen and (min-width: 65ch) {
-  @media only screen and (max-width: 100ch) {
-    #markdownBody {
-      line-height: 1.45;
-    }
-  }
-  @media only screen and (min-width: 100.1ch) and (max-width: 120ch) {
-    #markdownBody {
-      line-height: 1.5;
-    }
-  }
-  @media only screen and (min-width: 120.1ch) {
-    #markdownBody {
-      line-height: 1.55;
-    }
-  }
-}
-
-@supports (-webkit-hyphens: auto) or (-ms-hyphens: auto) or (hyphens: auto) {
-  #markdownBody li,
-  #markdownBody p {
-    text-align: justify;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
-  }
-}
-
-#markdownBody p {
-  font-variant-numeric: oldstyle-nums;
-}
-
 footer {
   font-family: "Raleway", "Source Sans Pro", sans-serif;
   & #license::before {
     content: "|";
     margin-left: 0.2em;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    filter: invert(98%);
-    background-color: #000000;
   }
 }

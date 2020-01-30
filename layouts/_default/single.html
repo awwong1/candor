@@ -5,14 +5,8 @@
   <article>
     {{ partial "page-metadata" . }}
     {{ .TableOfContents }}
-    <div id="markdownBody">
-      {{- .Content -}}
-    </div>
-
-    <div>
-      {{ template "_internal/disqus.html" . }}
-    </div>
-    <!-- {{ partial "breadcrumbs" . }} -->
+    <div id="markdownBody">{{- partial "anchorize-headings.html" .Content -}}</div>
+    {{ template "_internal/disqus.html" . }}
   </article>
 </main>
 {{ end }}

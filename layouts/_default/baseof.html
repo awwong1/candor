@@ -18,9 +18,7 @@
   {{ with slice $autoJs $copyJs | resources.Concat "js/tex-contrib.js" | minify | fingerprint }}
   <script type="text/javascript" src="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" defer
     onload="renderMathInElement(document.getElementById('markdownBody'),{delimiters:[
-      {left: '$$', right: '$$', display: true},
-      {left: '\\(', right: '\\)', display: false},
-      {left: '\\[', right: '\\]', display: true}
+      {left: '$$', right: '$$', display: true},{left: '\\(', right: '\\)', display: false},{left: '\\[', right: '\\]', display: true}
     ]});"></script>{{ end }}
 
   {{ with .OutputFormats.Get "RSS" -}}
