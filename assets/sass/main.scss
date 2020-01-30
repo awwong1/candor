@@ -166,19 +166,19 @@ article {
   }
   & > :not(#TableOfContents) a {
     &:hover {
-      color: #888888;
+      color: #7345a2;
       text-decoration-style: dotted;
     }
     &:visited {
-      color: #663399;
+      color: #3c3c3c;
     }
     &:link {
-      color: #3c3c3c;
+      color: #663399;
       text-decoration-line: underline;
     }
   }
   code {
-    font-size:0.9em;
+    font-size: 0.9em;
   }
   pre {
     margin: 0;
@@ -404,75 +404,61 @@ ul#tags {
     width: 0.25em;
     height: 100%;
   }
-}
-
-#TableOfContents > ul {
-  counter-reset: htoc_1;
-}
-
-#TableOfContents > ul > li::before {
-  counter-increment: htoc_1;
-  content: counter(htoc_1) "\2006  ";
-}
-
-#TableOfContents > ul ul {
-  counter-reset: htoc_2;
-}
-
-#TableOfContents > ul ul li::before {
-  counter-increment: htoc_2;
-  content: counter(htoc_1) "." counter(htoc_2) "\2006  ";
-}
-
-#TableOfContents > ul ul ul {
-  counter-reset: htoc_3;
-}
-
-#TableOfContents > ul ul ul li::before {
-  counter-increment: htoc_3;
-  content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "\2006  ";
-}
-
-#TableOfContents > ul ul ul ul {
-  counter-reset: htoc_4;
-}
-
-#TableOfContents > ul ul ul ul li::before {
-  counter-increment: htoc_4;
-  content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "\2006  ";
-}
-
-#TableOfContents > ul ul ul ul ul {
-  counter-reset: htoc_5;
-}
-
-#TableOfContents > ul ul ul ul ul li::before {
-  counter-increment: htoc_5;
-  content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "." counter(htoc_5) "\2006  ";
-}
-
-#TableOfContents > ul ul ul ul ul ul {
-  counter-reset: htoc_6;
-}
-
-#TableOfContents > ul ul ul ul ul ul li::before {
-  counter-increment: htoc_6;
-  content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "." counter(htoc_5) "."
-    counter(htoc_6) "\2006  ";
-}
-
-#TableOfContents ul li::before {
-  position: absolute;
-  right: calc(100% - 1em);
-  width: 12ch;
-  text-align: right;
-  font-weight: 400;
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-#TableOfContents ul li:hover::before {
-  opacity: 0.7;
+  > ul {
+    counter-reset: htoc_1;
+  }
+  > ul > li::before {
+    counter-increment: htoc_1;
+    content: counter(htoc_1) "\2006  ";
+  }
+  > ul ul {
+    counter-reset: htoc_2;
+  }
+  > ul ul li::before {
+    counter-increment: htoc_2;
+    content: counter(htoc_1) "." counter(htoc_2) "\2006  ";
+  }
+  > ul ul ul {
+    counter-reset: htoc_3;
+  }
+  > ul ul ul li::before {
+    counter-increment: htoc_3;
+    content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "\2006  ";
+  }
+  > ul ul ul ul {
+    counter-reset: htoc_4;
+  }
+  > ul ul ul ul li::before {
+    counter-increment: htoc_4;
+    content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "\2006  ";
+  }
+  > ul ul ul ul ul {
+    counter-reset: htoc_5;
+  }
+  > ul ul ul ul ul li::before {
+    counter-increment: htoc_5;
+    content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "." counter(htoc_5) "\2006  ";
+  }
+  > ul ul ul ul ul ul {
+    counter-reset: htoc_6;
+  }
+  > ul ul ul ul ul ul li::before {
+    counter-increment: htoc_6;
+    content: counter(htoc_1) "." counter(htoc_2) "." counter(htoc_3) "." counter(htoc_4) "." counter(htoc_5) "."
+      counter(htoc_6) "\2006  ";
+  }
+  ul li::before {
+    position: absolute;
+    right: calc(100% - 1em);
+    width: 12ch;
+    text-align: right;
+    font-weight: 400;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  ul li:hover::before {
+    opacity: 0.7;
+  }
 }
 
 #markdownBody {
@@ -491,7 +477,7 @@ ul#tags {
     tr:nth-child(odd) {
       background: #e9e9e9;
     }
-    tr:nth-child(even){
+    tr:nth-child(even) {
       background: #f9f9f9;
     }
     td {
@@ -501,25 +487,43 @@ ul#tags {
       padding-left: 2ch;
     }
   }
-  // link should show from where it came from
+  // udia.ca, media.udia.ca (localhost for development)
   a[href^="//localhost:1313"], a[href^="//media.udia.ca"], a[href^="//udia.ca"] {
     &:hover::after {
       opacity: 0.65;
     }
     &::after {
-      // content: "⬡";
       content: "";
       background-image: url(/images/logo.svg);
       background-repeat: no-repeat;
       background-size: 1.1em;
-      width: 1.1em;
+      width: 1em;
       height: 1.1em;
+      display: inline-block;
+      padding: 0;
+      vertical-align: top;
+      opacity: 0.825;
+    }
+  }
+  a[href*="git.udia.ca"] {
+    &:hover::after {
+      opacity: 0.65;
+    }
+    &::after {
+      content: "";
+      background-image: url(/logo/gitea.svg);
+      background-repeat: no-repeat;
+      background-size: 0.8em;
+      background-position: top right;
+      width: 0.85em;
+      height: 0.85em;
       display: inline-block;
       padding: 0;
       vertical-align: baseline;
       opacity: 0.825;
     }
   }
+  // wikipedia
   a[href*="wikipedia.org"],
   a[href*="wikimedia.org"],
   a[href*="wikimediafoundation.org"],
@@ -529,10 +533,10 @@ ul#tags {
     }
     &::after {
       content: "";
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNTEyIj48cGF0aCBkPSJNNjQwIDUxLjJsLS4zIDEyLjJjLTI4LjEuOC00NSAxNS44LTU1LjggNDAuMy0yNSA1Ny44LTEwMy4zIDI0MC0xNTUuMyAzNTguNkg0MTVsLTgxLjktMTkzLjFjLTMyLjUgNjMuNi02OC4zIDEzMC05OS4yIDE5My4xLS4zLjMtMTUgMC0xNS0uM0MxNzIgMzUyLjMgMTIyLjggMjQzLjQgNzUuOCAxMzMuNCA2NC40IDEwNi43IDI2LjQgNjMuNC4yIDYzLjdjMC0zLjEtLjMtMTAtLjMtMTQuMmgxNjEuOXYxMy45Yy0xOS4yIDEuMS01Mi44IDEzLjMtNDMuMyAzNC4yIDIxLjkgNDkuNyAxMDMuNiAyNDAuMyAxMjUuNiAyODguNiAxNS0yOS43IDU3LjgtMTA5LjIgNzUuMy0xNDIuOC0xMy45LTI4LjMtNTguNi0xMzMuOS03Mi44LTE2MC05LjctMTcuOC0zNi4xLTE5LjQtNTUuOC0xOS43VjQ5LjhsMTQyLjUuM3YxMy4xYy0xOS40LjYtMzguMSA3LjgtMjkuNCAyNi4xIDE4LjkgNDAgMzAuNiA2OC4xIDQ4LjEgMTA0LjcgNS42LTEwLjggMzQuNy02OS40IDQ4LjEtMTAwLjggOC45LTIwLjYtMy45LTI4LjYtMzguNi0yOS40LjMtMy42IDAtMTAuMy4zLTEzLjYgNDQuNC0uMyAxMTEuMS0uMyAxMjMuMS0uNnYxMy42Yy0yMi41LjgtNDUuOCAxMi44LTU4LjEgMzEuN2wtNTkuMiAxMjIuOGM2LjQgMTYuMSA2My4zIDE0Mi44IDY5LjIgMTU2LjdMNTU5LjIgOTEuOGMtOC42LTIzLjEtMzYuNC0yOC4xLTQ3LjItMjguM1Y0OS42bDEyNy44IDEuMS4yLjV6Ii8+PC9zdmc+');
+      background-image: url(/logo/wikipedia.svg);
       background-repeat: no-repeat;
-      background-size: 0.76em;
-      width: 0.825em;
+      background-size: 0.9em;
+      width: 0.82em;
       height: 0.825em;
       display: inline-block;
       vertical-align: baseline;

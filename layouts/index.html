@@ -6,7 +6,7 @@
     {{ partial "page-metadata" . }}
     {{ .TableOfContents }}
     <div id="markdownBody">
-      {{ .Content }}
+      {{- .Content -}}
     </div>
   </article>
   <!-- {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
