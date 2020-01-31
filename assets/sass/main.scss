@@ -474,7 +474,7 @@ ul#tags {
   }
 
   // udia.ca, media.udia.ca (localhost for development)
-  a[href^="//localhost:1313"], a[href^="//media.udia.ca"], a[href^="//udia.ca"] {
+  a[href^="//localhost:1313"], a[href^="//media.udia.ca"], a[href^="//udia.ca"], a[href^="/"] {
     &:hover::after {
       opacity: 0.65;
     }
