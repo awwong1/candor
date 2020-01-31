@@ -7,7 +7,7 @@
     {{ .TableOfContents }}
     <div id="markdownBody">{{- partial "post-process.html" .Content -}}</div>
   </article>
-  {{ range .Paginator.Pages }}{{ .Render "summary" }}{{ end }}
+  {{ range .Paginator.Pages.ByLastmod.Reverse }}{{ .Render "summary" }}{{ end }}
   {{ partial "pagination.html" . }}
 </main>
 {{ end }}

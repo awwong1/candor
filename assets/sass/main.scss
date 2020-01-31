@@ -209,13 +209,13 @@ ul#tags {
   }
 }
 
-#page-metadata {
+#page-metadata, .article-metadata {
   margin: 0 0 1em 0;
   overflow: visible;
   font-size: 0.95em;
   line-height: 1.1;
   & > span:not(:last-child)::after {
-    content: "|";
+    content: ";";
   }
   hr {
     display: none;
@@ -428,21 +428,20 @@ ul#tags {
     }
   }
   a.h-anchor {
+    display: flex;
+    justify-content: space-between;
+    opacity: 1;
+    &::after {
+      content: "\00B6";
+    }
+    &:hover::after {
+      visibility: visible;
+    }
+    &:not(:hover)::after {
+      visibility: hidden;
+    }
     &:hover {
-      color: #000000;
-      opacity: 0.825;
-      &::after {
-        content: "";
-        background-image: url(/images/logo.svg);
-        background-repeat: no-repeat;
-        background-size: 1em;
-        width: 0.9em;
-        height: 1em;
-        display: inline-block;
-        padding: 0;
-        vertical-align: sub;
-        opacity: 0.825;
-      }
+      opacity: 0.6;
     }
     &:visited {
       color: #000000;
