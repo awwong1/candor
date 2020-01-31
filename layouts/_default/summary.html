@@ -1,7 +1,7 @@
 <article>
-  <h1 class="summary-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+  <h1 class="summary-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
   <div>
     {{ .Summary }}
-    {{ if .Truncated }}<a href="{{ .Permalink }}">Read more...</a>{{ end }}
+    {{ if .Truncated }}<a href="{{ .RelPermalink }}">Read more...</a>{{ end }}
   </div>
 </article>

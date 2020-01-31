@@ -16,12 +16,6 @@
     -ms-user-select: all;
 }
 
-/* Wrap all display math in an overflow friendly block , modified katex-auto-render.js */
-.katex-container {
-  display: block;
-  overflow-x: auto;
-}
-
 @font-face {
   font-family: 'KaTeX_AMS';
   src: url(/fonts/katex/KaTeX_AMS-Regular.woff2) format('woff2'), url(/fonts/katex/KaTeX_AMS-Regular.woff) format('woff'), url(/fonts/katex/KaTeX_AMS-Regular.ttf) format('truetype');

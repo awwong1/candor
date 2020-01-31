@@ -240,7 +240,7 @@ var auto_render_renderMathInText = function renderMathInText(text, optionsCopy) 
       var span = document.createElement("span");
       // enables custom overflow styles for display math
       if (optionsCopy && !optionsCopy.displayMode) {
-        span.className = "katex-container";
+        span.className = "scroll-indicator";
       }
       var math = data[i].data; // Override any display mode defined in the settings with that
       // defined by the text itself
