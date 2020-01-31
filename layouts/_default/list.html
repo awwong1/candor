@@ -3,7 +3,7 @@
 <main>
   {{ partial "header" . }}
   <article>
-    {{ partial "page-metadata" . }}
+    {{ if eq .Paginator.TotalNumberOfElements 0 }}{{ partial "page-metadata" . }}{{ end }}
     {{ .TableOfContents }}
     <div id="markdownBody">{{- partial "post-process.html" .Content -}}</div>
   </article>

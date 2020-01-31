@@ -165,12 +165,13 @@ article {
   span.scroll-indicator {
     display: block;
   }
-  pre, .scroll-indicator {
+  pre,
+  .scroll-indicator {
     overflow-x: auto;
     background: linear-gradient(90deg, white 30%, rgba(255, 255, 255, 0)) left/3em no-repeat local,
-    linear-gradient(90deg, rgba(255, 255, 255, 0), white 70%) right/3em no-repeat local,
-    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)) left/.7em no-repeat scroll,
-    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)) right/.7em no-repeat scroll;
+      linear-gradient(90deg, rgba(255, 255, 255, 0), white 70%) right/3em no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)) left/.7em no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)) right/.7em no-repeat scroll;
   }
 }
 
@@ -417,7 +418,7 @@ ul#tags {
       font-family: "Raleway", "Source Sans Pro", sans-serif;
     }
     tr:nth-child(odd) {
-      background: rgba(233,233,233,0.5);
+      background: rgba(233, 233, 233, 0.5);
     }
     td {
       padding: 0 1ch 0 1ch;
@@ -491,7 +492,9 @@ ul#tags {
       opacity: 0.825;
     }
   }
-  a[href*="git.udia.ca"] {
+  // gitea
+  a[href*="git.udia.ca"],
+  a[href*="gitea.com"] {
     &:hover::after {
       opacity: 0.65;
     }
@@ -526,6 +529,22 @@ ul#tags {
       height: 0.825em;
       display: inline-block;
       vertical-align: baseline;
+      opacity: 0.825;
+    }
+  }
+  a[href*="github.com"] {
+    &:hover::after {
+      opacity: 0.65;
+    }
+    &::after {
+      content: "";
+      background-image: url(/logo/github.svg);
+      background-repeat: no-repeat;
+      background-size: 0.9em;
+      width: 1em;
+      height: 0.825em;
+      display: inline-block;
+      vertical-align: top;
       opacity: 0.825;
     }
   }
