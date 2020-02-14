@@ -10,6 +10,23 @@ cd hugo
 go install --tags extended
 ```
 
+## Site Parameters
+
+Defined in `config.[yaml|toml|json]`, these parameters are used by the Candor theme. The defaults are provided below.
+
+```toml
+[params]
+  author = "Alexander Wong"                     # str
+  license = "WTFPL"                             # str
+  licenseLink = ""http://www.wtfpl.net/about/"" # str
+
+  # Math typesetting
+  disableKatexJS = false  # bool (useful to disable if server rendering math)
+  # str: left delim, str: right delim, str: math type (display/inline)
+  katexDelimiters = [["$$", "$$", "display"], ["\\(", "\\)", "inline"]]
+```
+
+
 ## License
 
 [MIT](LICENSE)
