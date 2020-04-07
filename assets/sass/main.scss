@@ -60,10 +60,6 @@ body {
   @media only screen and (max-width: 65ch) {
     margin: 0 1ch;
   }
-  @media (prefers-color-scheme: dark) {
-    filter: invert(98%);
-    background-color: #000000;
-  }
 }
 
 #sidebar {
@@ -84,6 +80,8 @@ body {
     width: 10ch;
     a#logo {
       margin: 1em 0 1em 0;
+      display: flex;
+      justify-content: center;
       img {
         width: 5rem;
       }
@@ -209,7 +207,8 @@ ul#tags {
   }
 }
 
-#page-metadata, .article-metadata {
+#page-metadata,
+.article-metadata {
   margin: 0 0 1em 0;
   overflow: visible;
   font-size: 0.95em;
@@ -474,7 +473,8 @@ ul#tags {
   }
 
   // udia.ca, media.udia.ca (localhost for development)
-  a[href^="//localhost:1313"], a[href^="//media.udia.ca"], a[href^="//udia.ca"], a[href^="/"] {
+  a[href^="//localhost:1313"], a[href^="//media.udia.ca"], a[href^="//udia.ca"], a[href^="/"]
+  {
     &:hover::after {
       opacity: 0.65;
     }
@@ -554,5 +554,50 @@ footer {
   & #license::before {
     content: "|";
     margin-left: 0.2em;
+  }
+}
+#ui-elements-container {
+  display: block;
+  width: 100%;
+  height: 3em;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  z-index: 10000;
+}
+#theme-selector {
+  position: fixed;
+  right: 1px;
+  top: 1px;
+  opacity: 0.6;
+  display: flex;
+  justify-content: center;
+  @media only screen and (max-width: 65ch) {
+    flex-direction: column;
+  }
+  &:hover {
+    opacity: 1;
+    background-color: #fff;
+  }
+  button {
+    font-family: "Raleway", "Source Sans Pro", sans-serif;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background-color: transparent;
+    padding: 0.5em;
+    margin: 0;
+    line-height: 1;
+    font-size: 0.75rem;
+    text-align: center;
+    color: #777;
+    position: relative;
+    cursor: pointer;
+    &.active {
+      color: #663399;
+    }
+    &.selected {
+      text-decoration: underline;
+    }
   }
 }

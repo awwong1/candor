@@ -1,6 +1,6 @@
 {{ define "main" }}
-{{ partial "sidebar.html" . }}
 <main>
+  {{ partial "sidebar.html" . }}
   {{ partial "header" . }}
   <article>
     {{ if eq .Paginator.TotalNumberOfElements 0 }}{{ partial "page-metadata" . }}{{ end }}
