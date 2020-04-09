@@ -237,8 +237,8 @@ function setMode(modeOption) {
   if (modeOption == 'auto') {
     window.UDIA.themeStyle.innerHTML = window.UDIA.themeStyleHTML;
   } else if (modeOption == 'dark') {
-    let re = /^\@media\s*\(prefers-color-scheme:\s*dark\){(.*)}\s*$/;
-    window.UDIA.themeStyle.innerHTML = re.exec(window.UDIA.themeStyleHTML)[0];
+    let re = /^.*{(\:root.*)\}\s*$/;
+    window.UDIA.themeStyle.innerHTML = re.exec(window.UDIA.themeStyleHTML)[1];
   } else {
     window.UDIA.themeStyle.innerHTML = "";
   }
