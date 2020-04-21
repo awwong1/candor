@@ -31,6 +31,11 @@ body {
   max-width: 112ch;
   color: #000000;
   background-color: #ffffff;
+  figure > img {
+    width: 100%;
+    height: auto;
+  }
+
   @media only screen and (min-width: 65ch) {
     padding: 0 1.5ch 0 0.5ch;
     margin: 0 auto;
