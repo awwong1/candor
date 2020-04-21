@@ -31,9 +31,21 @@ body {
   max-width: 112ch;
   color: #000000;
   background-color: #ffffff;
-  figure > img {
-    width: 100%;
-    height: auto;
+  figure {
+    img {
+      width: 100%;
+      height: auto;
+    }
+    & > figcaption > p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      display: inline-block;
+      margin: 0;
+    }
   }
 
   @media only screen and (min-width: 65ch) {
@@ -477,79 +489,81 @@ ul#tags {
     }
   }
 
-  // udia.ca, media.udia.ca (localhost for development)
-  a[href^="//localhost:1313"], a[href^="//media.udia.ca"], a[href^="//udia.ca"], a[href^="/"]
-  {
-    &:hover::after {
-      opacity: 0.65;
+  :not(figure) > a {
+    // udia.ca, media.udia.ca (localhost for development)
+    &[href^="//localhost:1313"], &[href^="//media.udia.ca"], &[href^="//udia.ca"], &[href^="/"]
+    {
+      &:hover::after {
+        opacity: 0.65;
+      }
+      &::after {
+        content: "";
+        background-image: url(/images/logo.svg);
+        background-repeat: no-repeat;
+        background-size: 1.1em;
+        width: 1em;
+        height: 1.1em;
+        display: inline-block;
+        padding: 0;
+        vertical-align: top;
+        opacity: 0.825;
+      }
     }
-    &::after {
-      content: "";
-      background-image: url(/images/logo.svg);
-      background-repeat: no-repeat;
-      background-size: 1.1em;
-      width: 1em;
-      height: 1.1em;
-      display: inline-block;
-      padding: 0;
-      vertical-align: top;
-      opacity: 0.825;
+    // gitea
+    &[href*="git.udia.ca"],
+    &[href*="gitea.com"] {
+      &:hover::after {
+        opacity: 0.65;
+      }
+      &::after {
+        content: "";
+        background-image: url(/logo/gitea.svg);
+        background-repeat: no-repeat;
+        background-size: 0.8em;
+        background-position: top right;
+        width: 0.85em;
+        height: 0.85em;
+        display: inline-block;
+        padding: 0;
+        vertical-align: baseline;
+        opacity: 0.825;
+      }
     }
-  }
-  // gitea
-  a[href*="git.udia.ca"],
-  a[href*="gitea.com"] {
-    &:hover::after {
-      opacity: 0.65;
+    // wikipedia
+    &[href*="wikipedia.org"],
+    &[href*="wikimedia.org"],
+    &[href*="wikimediafoundation.org"],
+    &[href*="wikisource.org"] {
+      &:hover::after {
+        opacity: 0.65;
+      }
+      &::after {
+        content: "";
+        background-image: url(/logo/wikipedia.svg);
+        background-repeat: no-repeat;
+        background-size: 0.9em;
+        width: 0.82em;
+        height: 0.825em;
+        display: inline-block;
+        vertical-align: baseline;
+        opacity: 0.825;
+      }
     }
-    &::after {
-      content: "";
-      background-image: url(/logo/gitea.svg);
-      background-repeat: no-repeat;
-      background-size: 0.8em;
-      background-position: top right;
-      width: 0.85em;
-      height: 0.85em;
-      display: inline-block;
-      padding: 0;
-      vertical-align: baseline;
-      opacity: 0.825;
-    }
-  }
-  // wikipedia
-  a[href*="wikipedia.org"],
-  a[href*="wikimedia.org"],
-  a[href*="wikimediafoundation.org"],
-  a[href*="wikisource.org"] {
-    &:hover::after {
-      opacity: 0.65;
-    }
-    &::after {
-      content: "";
-      background-image: url(/logo/wikipedia.svg);
-      background-repeat: no-repeat;
-      background-size: 0.9em;
-      width: 0.82em;
-      height: 0.825em;
-      display: inline-block;
-      vertical-align: baseline;
-      opacity: 0.825;
-    }
-  }
-  a[href*="github.com"] {
-    &:hover::after {
-      opacity: 0.65;
-    }
-    &::after {
-      content: "";
-      background-image: url(/logo/github.svg);
-      background-repeat: no-repeat;
-      background-size: 0.9em;
-      width: 1em;
-      height: 0.825em;
-      display: inline-block;
-      vertical-align: top;
-      opacity: 0.825;
+    &[href*="github.com"] {
+      &:hover::after {
+        opacity: 0.65;
+      }
+      &::after {
+        content: "";
+        background-image: url(/logo/github.svg);
+        background-repeat: no-repeat;
+        background-size: 0.9em;
+        width: 1em;
+        height: 0.825em;
+        display: inline-block;
+        vertical-align: top;
+        opacity: 0.825;
+      }
     }
   }
 }
