@@ -2,7 +2,7 @@
  * Inspired by https://www.gwern.net/static/js/darkmode.js
  */
 
-if (typeof(window.UDIA) == "undefined") {
+if (typeof (window.UDIA) == "undefined") {
   window.UDIA = {};
 }
 
@@ -31,7 +31,7 @@ function doWhenPageLoaded(f) {
  * @param {*} includeMouseDown 
  */
 function addActivateEvent(fn, includeMouseDown) {
-  let ael = function (event) {
+  let ael = (event) => {
     if (event.button === 0 || event.key === ' ') fn(event);
   }
   this.activateEventListener = ael;
@@ -56,62 +56,7 @@ function addScrollListener(fn, name) {
   document.addEventListener("scroll", wrapper, { once: true, passive: true });
 
   // Retain a reference to the scroll listener, if a name is provided.
-  if (typeof name == "string")
-    GW[name] = wrapper;
-}
-
-/************************/
-/* ACTIVE MEDIA QUERIES */
-/************************/
-
-/*  This function provides two slightly different versions of its functionality,
-    depending on how many arguments it gets.
-
-    If one function is given (in addition to the media query and its name), it
-    is called whenever the media query changes (in either direction).
-
-    If two functions are given (in addition to the media query and its name),
-    then the first function is called whenever the media query starts matching,
-    and the second function is called whenever the media query stops matching.
-
-    If you want to call a function for a change in one direction only, pass an
-    empty closure (NOT null!) as one of the function arguments.
-
-    There is also an optional fifth argument. This should be a function to be
-    called when the active media query is canceled.
-    */
-function doWhenMatchMedia(mediaQuery, name, ifMatchesOrAlwaysDo, otherwiseDo = null, whenCanceledDo = null) {
-  if (typeof GW.mediaQueryResponders == "undefined")
-    GW.mediaQueryResponders = {};
-
-  let mediaQueryResponder = (event, canceling = false) => {
-    if (canceling) {
-      if (whenCanceledDo != null)
-        whenCanceledDo(mediaQuery);
-    } else {
-      let matches = (typeof event == "undefined") ? mediaQuery.matches : event.matches;
-
-      if (otherwiseDo == null || matches) ifMatchesOrAlwaysDo(mediaQuery);
-      else otherwiseDo(mediaQuery);
-    }
-  };
-  mediaQueryResponder();
-  mediaQuery.addListener(mediaQueryResponder);
-
-  GW.mediaQueryResponders[name] = mediaQueryResponder;
-}
-
-/*  Deactivates and discards an active media query, after calling the function
-    that was passed as the whenCanceledDo parameter when the media query was
-    added.
-    */
-function cancelDoWhenMatchMedia(name) {
-  GW.mediaQueryResponders[name](null, true);
-
-  for ([key, mediaQuery] of Object.entries(GW.mediaQueries))
-    mediaQuery.removeListener(GW.mediaQueryResponders[name]);
-
-  GW.mediaQueryResponders[name] = null;
+  if (typeof name == "string") window.UDIA[name] = wrapper;
 }
 
 /******************/
@@ -131,8 +76,8 @@ function injectModeSelector() {
   window.UDIA.themeStyle = themeStyle;
   window.UDIA.themeStyleHTML = `${themeStyle.innerHTML}`;
 
-  themeSelector.querySelectorAll("button").forEach(function(button) {
-    button.addActivateEvent(function(event) {
+  themeSelector.querySelectorAll("button").forEach((button) => {
+    button.addActivateEvent((event) => {
       // Determine which setting was chosen (i.e., which button was clicked).
       let selectedMode = event.target.dataset.name;
 
@@ -152,53 +97,53 @@ function injectModeSelector() {
 
   // We pre-query the relevant elements, so we do not have to run queryAll on
   // every firing of the scroll listener.
-  // GW.scrollState = {
-  //   "lastScrollTop": window.pageYOffset || document.documentElement.scrollTop,
-  //   "unbrokenDownScrollDistance": 0,
-  //   "unbrokenUpScrollDistance": 0,
-  //   "modeSelector": document.querySelectorAll("#mode-selector"),
-  // };
-  // addScrollListener(updateModeSelectorVisibility, "updateModeSelectorVisibilityScrollListener");
-  // GW.scrollState.modeSelector[0].addEventListener("mouseover", () => { showModeSelector(); });
-  // doWhenMatchMedia(GW.mediaQueries.systemDarkModeActive, "updateModeSelectorStateForSystemDarkMode", () => { updateModeSelectorState(); });
+  window.UDIA.scrollState = {
+    "lastScrollTop": window.pageYOffset || document.documentElement.scrollTop,
+    "unbrokenDownScrollDistance": 0,
+    "unbrokenUpScrollDistance": 0,
+  };
+  addScrollListener(updateModeSelectorVisibility, "updateModeSelectorVisibilityScrollListener");
+  window.UDIA.themeSelector.addEventListener("mouseover", showModeSelector);
 }
 
-/*  Show/hide the mode selector in response to scrolling.
-
-    */
-function updateModeSelectorVisibility(event) {
+/**
+ * Show/hide the mode selector in response to scrolling.
+ * @param {*} _ 
+ */
+function updateModeSelectorVisibility(_) {
   let newScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  GW.scrollState.unbrokenDownScrollDistance = (newScrollTop > GW.scrollState.lastScrollTop) ?
-    (GW.scrollState.unbrokenDownScrollDistance + newScrollTop - GW.scrollState.lastScrollTop) :
+  window.UDIA.scrollState.unbrokenDownScrollDistance = (newScrollTop > window.UDIA.scrollState.lastScrollTop) ?
+    (window.UDIA.scrollState.unbrokenDownScrollDistance + newScrollTop - window.UDIA.scrollState.lastScrollTop) :
     0;
-  GW.scrollState.unbrokenUpScrollDistance = (newScrollTop < GW.scrollState.lastScrollTop) ?
-    (GW.scrollState.unbrokenUpScrollDistance + GW.scrollState.lastScrollTop - newScrollTop) :
+  window.UDIA.scrollState.unbrokenUpScrollDistance = (newScrollTop < window.UDIA.scrollState.lastScrollTop) ?
+    (window.UDIA.scrollState.unbrokenUpScrollDistance + window.UDIA.scrollState.lastScrollTop - newScrollTop) :
     0;
-  GW.scrollState.lastScrollTop = newScrollTop;
+  window.UDIA.scrollState.lastScrollTop = newScrollTop;
 
-  // Hide mode selector when scrolling a full page down.
-  if (GW.scrollState.unbrokenDownScrollDistance > window.innerHeight) {
+  // Hide mode selector when scrolling a half-page down.
+  if (window.UDIA.scrollState.unbrokenDownScrollDistance > (window.innerHeight / 2)) {
     hideModeSelector();
   }
 
-  // On desktop, show mode selector when scrolling to top of page,
-  // or a full page up.
   // On mobile, show mode selector on ANY scroll up.
-  if (GW.mediaQueries.mobileNarrow.matches) {
-    if (GW.scrollState.unbrokenUpScrollDistance > 0 || GW.scrollState.lastScrollTop <= 0)
+  // On desktop, show mode selector when scrolling to top of page, or a full page up.
+  if (matchMedia("(max-width: 520px)").matches) {
+    if (window.UDIA.scrollState.unbrokenUpScrollDistance > 0 || window.UDIA.scrollState.lastScrollTop <= 0)
       showModeSelector();
-  } else if (GW.scrollState.unbrokenUpScrollDistance > window.innerHeight
-    || GW.scrollState.lastScrollTop == 0) {
+  } else if (window.UDIA.scrollState.unbrokenUpScrollDistance > window.innerHeight
+    || window.UDIA.scrollState.lastScrollTop == 0) {
     showModeSelector();
   }
 }
 
 function hideModeSelector() {
-  GW.scrollState.modeSelector[0].classList.add("hidden");
+  window.UDIA.themeSelector.style.setProperty("opacity", "0");
+  window.UDIA.themeSelector.classList.add("hidden");
 }
 
 function showModeSelector() {
-  GW.scrollState.modeSelector[0].classList.remove("hidden");
+  window.UDIA.themeSelector.style.removeProperty("opacity");
+  window.UDIA.themeSelector.classList.remove("hidden");
 }
 
 /*  Update the states of the mode selector buttons.
@@ -208,7 +153,7 @@ function updateModeSelectorState() {
   let currentMode = localStorage.getItem("selected-mode") || 'auto';
 
   // Clear current buttons state.
-  window.UDIA.themeSelector.querySelectorAll("button").forEach(function(button) {
+  window.UDIA.themeSelector.querySelectorAll("button").forEach((button) => {
     button.classList.remove("active", "selected");
     button.disabled = false;
   });
