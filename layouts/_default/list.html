@@ -7,7 +7,12 @@
     {{ .TableOfContents }}
     <div id="markdownBody">{{- partial "post-process.html" .Content -}}</div>
   </article>
-  {{ range .Paginator.Pages.ByLastmod.Reverse }}{{ .Render "summary" }}{{ end }}
+  {{ range .Paginator.Pages.GroupByDate "2006-01" }}
+  <dl class="paginate-list-group">
+    <dt><h2>{{ dateFormat "January 2006" (printf "%s-01" .Key) }}</h2></dt>
+    <dd>{{ range .Pages }}{{ .Render "summary" }}{{ end }}</dd>
+  </dl>
+  {{ end }}
   {{ partial "pagination.html" . }}
 </main>
 {{ end }}

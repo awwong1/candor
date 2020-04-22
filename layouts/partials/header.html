@@ -1,5 +1,3 @@
 <header>
-  {{ if .Title }}
-  <h1>{{ with .Data.Singular }}{{ . }}:{{ end }}{{ .Title }}</h1>
-  {{ end }}
+  {{ if .Title }}<h1>{{ with .Data.Singular }}{{ . }}:{{ end }}{{ .Title }}</h1>{{ end }}
 </header>

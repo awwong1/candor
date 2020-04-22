@@ -1,16 +1,14 @@
 <footer>
-  <!-- <div>
-    <h3>Latest Posts</h3>
-    <ul>
-      {{ range first 5 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-      {{ end }}
-    </ul>
-  </div> -->
   <p>
     &copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">
-      {{ with .Site.Params.author }}<span>{{ . }},</span>{{ end }}
+      {{ with .Site.Params.author }}<span id="copyright">{{ . }},</span>{{ end }}
       {{ .Site.Title }}</a>
+    {{ with $.Site.Home.OutputFormats.Get "rss" -}}<span>
+      {{ printf `<a rel="%s" type="%s" href="%s" title="%s">RSS</a>` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    </span>{{ end -}}
+    <span>
+      <a rel="sitemap" type="application/xml" href="{{ relURL "sitemap.xml" }}" title="{{ $.Site.Title }}">Sitemap</a>
+    </span>
     <span id="license">
       License:
       {{ if .Site.Params.LicenseLink }}

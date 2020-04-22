@@ -11,11 +11,10 @@
   {{ hugo.Generator }}
   {{ if not .Site.Params.disableKatexJS }}{{ partial "client-katex" . }}{{ end }}
   {{ $scssOpts := (dict "outputStyle" "compressed") }}
-  {{ with resources.Get "sass/main.scss" | resources.ToCSS $scssOpts }}<style>{{ .Content | safeCSS }}</style>{{ end }}
-  {{ with resources.Get "sass/auto_dark_theme.scss" | resources.ToCSS $scssOpts }}<style id="dark-theme">{{ .Content | safeCSS }}</style>{{ end }}
+  {{ with resources.Get "sass/main.scss" | resources.ToCSS $scssOpts }}{{ printf `<style>%s</style>` (safeCSS .Content) | safeHTML }}{{ end }}
+  {{ with resources.Get "sass/auto_dark_theme.scss" | resources.ToCSS $scssOpts }}{{ printf `<style id="dark-theme">%s</style>` (safeCSS .Content) | safeHTML }}{{ end }}
   {{ with resources.Get "js/main.js" | minify | fingerprint }}<script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>{{ end }}
-  {{ with .OutputFormats.Get "RSS" -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}{{- end }}
+  {{ range .OutputFormats -}}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" title="{{ printf "%s %s" $.Title .Name }}">{{ end -}}
   <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml">
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">

@@ -1,5 +1,5 @@
 <div id="page-metadata">
-  {{if .IsHome}}{{$.Site.Params.description}}{{end}}
+  {{ if .IsHome }}{{ $.Site.Params.description }}{{ end }}
   {{ with .Description }}<div id="page-description">{{ . }}</div>{{ end }}
   <!-- <span id="kind-type">kind: {{ .Kind }}/{{ .Type }};</span> -->
   {{ if .PublishDate }}

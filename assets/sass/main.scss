@@ -20,32 +20,26 @@ h6 {
   font-weight: 600;
 }
 
-main {
-  min-height: 95vh;
-  article:not(:first-of-type) {
-    margin-top: 1em;
-  }
-}
-
 body {
+  display: flex;
+  flex-direction: column;
   max-width: 112ch;
+  min-height: 100vh;
   color: #000000;
   background-color: #ffffff;
-  figure {
-    img {
-      width: 100%;
-      height: auto;
+
+  .paginate-list-group {
+    dd {
+      margin-left: 0;
+      article {
+        margin-left: 1em;
+      }
     }
-    & > figcaption > p,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      display: inline-block;
-      margin: 0;
-    }
+  }
+
+  #paginator {
+    display: flex;
+    justify-content: center;
   }
 
   @media only screen and (min-width: 65ch) {
@@ -55,7 +49,8 @@ body {
       position: absolute;
     }
     article,
-    header {
+    header,
+    .paginate-list-group {
       margin-left: 15ch;
       @media only screen and (max-width: 120ch) {
         margin-left: 14.5ch;
@@ -130,6 +125,30 @@ body {
       flex-flow: row wrap;
       margin: 0.5em 0 0 0;
     }
+  }
+}
+
+figure {
+  img {
+    width: 100%;
+    height: auto;
+  }
+  & > figcaption > p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
+main {
+  flex: 1 0 auto;
+  article:not(:first-of-type) {
+    margin-top: 1em;
   }
 }
 
@@ -570,14 +589,14 @@ ul#tags {
 
 footer {
   font-family: "Raleway", "Source Sans Pro", sans-serif;
-  & #license::before {
+  align-self: flex-end;
+  & span:not(#copyright)::before {
     content: "|";
     margin-left: 0.2em;
   }
 }
 #ui-elements-container {
   display: block;
-  width: 100%;
   height: 3em;
   position: fixed;
   top: 0px;
