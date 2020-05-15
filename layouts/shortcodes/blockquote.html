@@ -1,0 +1,11 @@
+{{ $bl_author := (.Get 0) }}{{ $bl_source := (.Get 1) }}{{ $bl_link := (.Get 2) }}
+{{ if .IsNamedParams }}{{ $bl_author = (.Get "author") }}{{ $bl_source = (.Get "source") }}{{ $bl_link = (.Get "link") }}{{ end }}
+<div class="epigraph">
+  <blockquote>
+    <p>{{ .Inner | markdownify }}</p>
+    <footer>
+      {{ with $bl_author }}{{ . }}{{ end }}
+      {{ if and $bl_link $bl_source }}<cite><a href="{{ $bl_link }}" title="{{ $bl_source }}">{{ $bl_source }}</a></cite>{{ else if $bl_source }}<cite>{{ $bl_source }}</cite>{{ end }}
+    </footer>
+  </blockquote>
+</div>

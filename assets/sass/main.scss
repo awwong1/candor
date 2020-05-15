@@ -72,6 +72,14 @@ body {
   @media only screen and (max-width: 65ch) {
     margin: 0 1ch;
   }
+  & > footer {
+    font-family: "Raleway", "Source Sans Pro", sans-serif;
+    align-self: flex-end;
+    & span:not(#copyright)::before {
+      content: "|";
+      margin-left: 0.2em;
+    }
+  }
 }
 
 #sidebar {
@@ -585,16 +593,39 @@ ul#tags {
       }
     }
   }
-}
 
-footer {
-  font-family: "Raleway", "Source Sans Pro", sans-serif;
-  align-self: flex-end;
-  & span:not(#copyright)::before {
-    content: "|";
-    margin-left: 0.2em;
+  div.epigraph {
+    blockquote {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: stretch;
+      // margin: 0;
+      p {
+        margin: 0;
+      }
+    }
+    blockquote::before,
+    blockquote::after {
+      font-size: 2em;
+    }
+    blockquote::before {
+      content: "\201C";
+      align-self: flex-start;
+    }
+    blockquote::after {
+      align-self: flex-end;
+      content: "\201D";
+    }
+    footer {
+      text-align: right;
+    }
+    cite::before {
+      content: "\2014";
+    }
   }
 }
+
 #ui-elements-container {
   display: block;
   height: 3em;
