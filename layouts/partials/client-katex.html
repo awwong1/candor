@@ -1,11 +1,8 @@
 {{ with resources.Get "js/katex.js" | minify | fingerprint }}<script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>{{ end }}
 {{ $autoJs := resources.Get "js/katex-auto-render.js" }}{{ $copyJs := resources.Get "js/katex-copy-tex.js" }}
-{{ $rawDelims := slice }}
-{{ range $delim_val := .Site.Params.katexDelimiters }}
-  {{ $ld := index $delim_val 0 | replaceRE "([\\\\])(.*)" "\\\\${2}" }}{{ $rd := index $delim_val 1 | replaceRE "([\\\\])(.*)" "\\\\${2}" }}{{ $delim_p_str := "" }}
-  {{ if eq "display" (index $delim_val 2) }}{{ $delim_p_str = printf "{left:'%s',right:'%s',display:%s}" $ld $rd "true" }}{{ else }}{{ $delim_p_str = printf "{left:'%s',right:'%s',display:%s}" $ld $rd "false" }}{{ end }}
-  {{ $rawDelims = $rawDelims | append $delim_p_str}}
-{{ else }}
-  {{ $rawDelims = slice "{left:'$$',right:'$$',display:true}" "{left:'\\\\(',right:'\\\\)',display:false}" }}
+{{ with slice $autoJs $copyJs | resources.Concat "js/tex-contrib.js" | minify | fingerprint }}<script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>{{ end }}
+
+{{ $loadKatexJs := resources.Get "js/katex-onload-template.js" | resources.ExecuteAsTemplate "js/load-katex.js" . }}
+{{ with $loadKatexJs  | minify | fingerprint }}
+<script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}"></script>
 {{ end }}
-{{ with slice $autoJs $copyJs | resources.Concat "js/tex-contrib.js" | minify | fingerprint }}<script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer onload="renderMathInElement(document.getElementById('markdownBody'),{delimiters:[{{ delimit $rawDelims "," | safeJS }}]});"></script>{{ end }}
